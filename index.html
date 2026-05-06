@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kayla's Kreations</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background-color: #FFFFFF;
+    }
+
+    /* Search Overlay */
+    .search-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      z-index: 200;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 100px;
+      box-sizing: border-box;
+    }
+
+    .search-overlay.active {
+      display: flex;
+    }
+
+    .search-box {
+      background: white;
+      padding: 30px;
+      width: 500px;
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #EDD5CC;
+      font-size: 16px;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      box-sizing: border-box;
+    }
+
+    .search-box input:focus {
+      border-color: #C4788A;
+    }
+
+    .search-close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      color: #2A2420;
+    }
+
+    /* Nav */
+    nav {
+      background-color: white;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 15px 40px;
+      border-bottom: 1px solid #EDD5CC;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      justify-self: start;
+    }
+
+    .logo {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .nav-brand-name {
+      font-size: 18px;
+      color: #2A2420;
+      letter-spacing: 1px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+    }
+
+    nav a {
+      color: #2A2420;
+      text-decoration: none;
+      letter-spacing: 2px;
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+
+    nav a:hover {
+      color: #C4788A;
+    }
+
+    nav a.active {
+      color: #C4788A;
+      border-bottom: 2px solid #C4788A;
+      padding-bottom: 3px;
+    }
+
+    .nav-icons {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      justify-self: end;
+    }
+
+    /* Hero */
+   .hero {
+  position: relative;
+  padding: 100px 20px;
+  text-align: center;
+  overflow: hidden;
+  background-color: #2a1a1a;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('logo.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.6;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0,0,0,0.15);
+  z-index: 1;
+}
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-content p.welcome {
+      color: #E8A0B0;
+      font-style: italic;
+      font-size: 18px;
+      margin-bottom: 10px;
+      font-family: 'Playfair Display', serif;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    }
+
+    .hero-content h1 {
+  color: white;
+  font-size: 60px;
+  margin-bottom: 15px;
+  font-family: 'Playfair Display', serif;
+}
+
+.hero-content p.tagline {
+  color: rgba(255,255,255,0.9);
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 15px 30px;
+      background-color: #C4788A;
+      color: white;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 3px;
+    }
+
+  .btn-outline {
+  padding: 15px 30px;
+  border: 2px solid white;
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 3px;
+}
+
+    /* Pink Banner */
+    .pink-banner {
+      background-color: #C4788A;
+      text-align: center;
+      padding: 50px 20px;
+      margin-top: 60px;
+    }
+
+    .pink-banner h1 {
+      color: white;
+      font-size: 42px;
+      margin-bottom: 20px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .pink-banner p {
+      color: white;
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+
+    .banner-btn {
+      display: inline-block;
+      padding: 15px 35px;
+      border: 2px solid white;
+      color: #C4788A;
+      background-color: white;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 2px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #1a1a1a;
+      color: white;
+      padding: 60px 40px 30px;
+      margin-top: 60px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-title {
+      color: #C4788A;
+      font-size: 13px;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+
+    .footer-desc {
+      color: rgba(255,255,255,0.6);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+
+    .footer-links a:hover {
+      color: #C4788A;
+    }
+
+    .footer-btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 12px 25px;
+      border: 1px solid #C4788A;
+      background-color: #C4788A;
+      color: white !important;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 2px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 20px;
+      text-align: center;
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Search Overlay -->
+  <div class="search-overlay" id="searchOverlay">
+    <div class="search-box">
+      <button class="search-close" onclick="closeSearch()">&times;</button>
+      <input type="text" placeholder="Search products...">
+    </div>
+  </div>
+
+  <nav>
+    <a href="index.html" class="nav-brand">
+      <img src="logo.jpg" class="logo" alt="Kayla's Kreations">
+      <span class="nav-brand-name">Kayla's Kreations</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-icons">
+      <a href="#" style="color:#2A2420;" onclick="openSearch(); return false;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+      </a>
+      <a href="cart.html" style="color:#2A2420;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+        </svg>
+      </a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="welcome">Welcome to</p>
+      <h1>Kayla's Kreations</h1>
+      <p class="tagline">Fashion, Accessories &amp; Electronics &mdash; All in One Luxurious Place</p>
+      <div class="hero-buttons">
+        <a href="shop.html" class="btn">SHOP NOW &rarr;</a>
+        <a href="about.html" class="btn-outline">OUR STORY</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="pink-banner">
+    <h1>Style. Elegance. You.</h1>
+    <p>Every piece in our collection is chosen with care &mdash; because you deserve nothing but the best.</p>
+    <a href="shop.html" class="banner-btn">EXPLORE THE COLLECTION &rarr;</a>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:15px;">
+          <img src="logo.jpg" style="width:45px; height:45px; border-radius:50%; object-fit:cover;">
+          <span style="font-size:18px; color:white; letter-spacing:1px; font-family:'Playfair Display',serif;">Kayla's Kreations</span>
+        </div>
+        <p class="footer-desc">Your one-stop boutique for fashion, accessories, and electronics. Shop with style, shop with confidence.</p>
+      </div>
+      <div>
+        <p class="footer-title">Quick Links</p>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop All</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="cart.html">Shopping Cart</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-title">Get in Touch</p>
+        <p class="footer-desc">Have questions? We'd love to hear from you.</p>
+        <a href="contact.html" class="footer-btn">Contact Us</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Kayla's Kreations. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function openSearch() {
+      document.getElementById('searchOverlay').classList.add('active');
+    }
+
+    function closeSearch() {
+      document.getElementById('searchOverlay').classList.remove('active');
+    }
+
+    document.getElementById('searchOverlay').addEventListener('click', function(e) {
+      if (e.target === this) closeSearch();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeSearch();
+    });
+  </script>
+
+</body>
+</html>
